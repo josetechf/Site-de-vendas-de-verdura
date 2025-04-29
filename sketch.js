@@ -1,67 +1,41 @@
-// Animação simples com p5.js
-function setup() {
-    let canvas = createCanvas(windowWidth, 100);
-    canvas.position(0, 0);
-    canvas.style('z-index', '-1');
-    background(240, 255, 240);
-}
-
-function draw() {
-    noStroke();
-    fill(100, 200, 100, 50);
-    ellipse(mouseX, mouseY, 20, 20);
-}
-
-// Carrinho de compras
-let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-window.addEventListener('load', atualizarCarrinho);
+let carrinho = [];
 
 function adicionarAoCarrinho(produto, preco) {
-    carrinho.push({ produto, preco });
-    salvarCarrinho();
-    atualizarCarrinho();
-}
-
-function removerItem(index) {
-    carrinho.splice(index, 1);
-    salvarCarrinho();
-    atualizarCarrinho();
-}
-
-function limparCarrinho() {
-    carrinho = [];
-    salvarCarrinho();
-    atualizarCarrinho();
+  carrinho.push({ produto, preco });
+  atualizarCarrinho();
 }
 
 function atualizarCarrinho() {
-    const carrinhoLista = document.getElementById('carrinho-itens');
-    const carrinhoTotal = document.getElementById('carrinho-total');
-    const contador = document.getElementById('carrinho-contador');
+  const carrinhoContador = document.getElementById('carrinho-contador');
+  const carrinhoTotal = document.getElementById('carrinho-total');
+  const carrinhoItens = document.getElementById('carrinho-itens');
 
-    carrinhoLista.innerHTML = '';
-    let total = 0;
+  let total = 0;
+  carrinhoItens.innerHTML = '';
+  
+  carrinho.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = `${item.produto} - R$ ${item.preco.toFixed(2)}`;
+    carrinhoItens.appendChild(li);
+    total += item.preco;
+  });
 
-    carrinho.forEach((item, index) => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            ${item.produto} - R$ ${item.preco.toFixed(2)}
-            <button onclick="removerItem(${index})" style="margin-left:10px;color:red;">Remover</button>
-        `;
-        carrinhoLista.appendChild(li);
-        total += item.preco;
-    });
-
-    carrinhoTotal.textContent = total.toFixed(2);
-    contador.textContent = carrinho.length;
-}
-
-function salvarCarrinho() {
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  carrinhoContador.textContent = carrinho.length;
+  carrinhoTotal.textContent = total.toFixed(2);
 }
 
 function toggleCarrinho() {
-    const carrinhoDiv = document.getElementById('carrinho');
-    carrinhoDiv.style.display = carrinhoDiv.style.display === 'block' ? 'none' : 'block';
+  const carrinhoElement = document.getElementById('carrinho');
+  const isHidden = carrinhoElement.getAttribute('aria-hidden') === 'true';
+  
+  carrinhoElement.setAttribute('aria-hidden', isHidden ? 'false' : 'true');
+  carrinhoElement.style.display = isHidden ? 'block' : 'none';
 }
+
+function limparCarrinho() {
+  carrinho = [];
+  atualizarCarrinho();
+  toggleCarrinho();
+}
+
 
