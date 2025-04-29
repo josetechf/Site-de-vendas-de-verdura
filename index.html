@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feira Verde & Artes</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Feira Verde & Artes</h1>
+        <nav>
+            <a href="#verduras">Verduras</a>
+            <a href="#artesanatos">Artesanatos</a>
+            <a href="#" onclick="toggleCarrinho()">🛒 Carrinho (<span id="carrinho-contador">0</span>)</a>
+        </nav>
+    </header>
+
+    <div id="carrinho" class="carrinho">
+        <h2>Seu Carrinho</h2>
+        <ul id="carrinho-itens"></ul>
+        <p><strong>Total:</strong> R$ <span id="carrinho-total">0.00</span></p>
+        <button onclick="limparCarrinho()">Esvaziar Carrinho</button>
+    </div>
+
+    <main>
+    <section id="verduras">
+        <h2>Verduras Frescas</h2>
+        <div class="produtos">
+            <div class="produto">
+                <img src="https://via.placeholder.com/150" alt="Alface">
+                <h3>Alface</h3>
+                <p>R$ 3,00</p>
+                <button onclick="adicionarAoCarrinho('Alface', 3.00)">Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="https://via.placeholder.com/150" alt="Cenoura">
+                <h3>Cenoura</h3>
+                <p>R$ 2,50</p>
+                <button onclick="adicionarAoCarrinho('Cenoura', 2.50)">Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="https://via.placeholder.com/150" alt="Couve">
+                <h3>Couve</h3>
+                <p>R$ 2,00</p>
+                <button onclick="adicionarAoCarrinho('Couve', 2.00)">Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="https://via.placeholder.com/150" alt="Espinafre">
+                <h3>Espinafre</h3>
+                <p>R$ 3,50</p>
+                <button onclick="adicionarAoCarrinho('Espinafre', 3.50)">Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="https://via.placeholder.com/150" alt="Abobrinha">
+                <h3>Abobrinha</h3>
+                <p>R$ 4,00</p>
+                <button onclick="adicionarAoCarrinho('Abobrinha', 4.00)">Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="https://via.placeholder.com/150" alt="Pimentão">
+                <h3>Pimentão</h3>
+                <p>R$ 5,00</p>
+                <button onclick="adicionarAoCarrinho('Pimentão', 5.00)">Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="https://via.placeholder.com/150" alt="Tomate">
+                <h3>Tomate</h3>
+                <p>R$ 6,00</p>
+                <button onclick="adicionarAoCarrinho('Tomate', 6.00)">Comprar</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="artesanatos">
+        <h2>Artesanatos Locais</h2>
+        <div class="produtos">
+            <div class="produto">
+                <img src="https://via.placeholder.com/150" alt="Cesto de Palha">
+                <h3>Cesto de Palha</h3>
+                <p>R$ 25,00</p>
+                <button onclick="adicionarAoCarrinho('Cesto de Palha', 25.00)">Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="https://via.placeholder.com/150" alt="Boneca de Pano">
+                <h3>Boneca de Pano</h3>
+                <p>R$ 30,00</p>
+                <button onclick="adicionarAoCarrinho('Boneca de Pano', 30.00)">Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="https://via.placeholder.com/150" alt="Brinco Artesanal">
+                <h3>Brinco Artesanal</h3>
+                <p>R$ 15,00</p>
+                <button onclick="adicionarAoCarrinho('Brinco Artesanal', 15.00)">Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="https://via.placeholder.com/150" alt="Colar de Sementes">
+                <h3>Colar de Sementes</h3>
+                <p>R$ 18,00</p>
+                <button onclick="adicionarAoCarrinho('Colar de Sementes', 18.00)">Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="https://via.placeholder.com/150" alt="Sabonete Artesanal">
+                <h3>Sabonete Artesanal</h3>
+                <p>R$ 8,00</p>
+                <button onclick="adicionarAoCarrinho('Sabonete Artesanal', 8.00)">Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="https://via.placeholder.com/150" alt="Tapete de Crochê">
+                <h3>Tapete de Crochê</h3>
+                <p>R$ 40,00</p>
+                <button onclick="adicionarAoCarrinho('Tapete de Crochê', 40.00)">Comprar</button>
+            </div>
+            <div class="produto">
+                <img src="https://via.placeholder.com/150" alt="Quadro Pintado à Mão">
+                <h3>Quadro Pintado à Mão</h3>
+                <p>R$ 55,00</p>
+                <button onclick="adicionarAoCarrinho('Quadro Pintado à Mão', 55.00)">Comprar</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+    <footer>
+        <p>&copy; 2025 Feira Verde & Artes - Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="sketch.js"></script>
+</body>
+</html>
